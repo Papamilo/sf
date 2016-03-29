@@ -1,0 +1,9 @@
+# messages.fr.yml
+
+Hello World: Salut Monde
+
+app:
+    menu:
+        home: Accueil
+        about: A propos
+        contact: Contact
