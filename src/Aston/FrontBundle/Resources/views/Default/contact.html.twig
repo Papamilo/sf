@@ -4,4 +4,48 @@
 
 {% block body %}
     <h1>Page contact</h1>
+    <div>
+        {#{{ dump(formContact) }}#}
+        {#{{ form(formContact, {attr: {novalidate: false} }) }}#}
+
+        {{ form_start(formContact, {attr: {novalidate: false} }) }}
+
+        <div class="form-group{% if formContact.name.vars.errors|length > 0 %} has-error{% endif %}">
+            {{ form_label(formContact.name) }}
+            {{ form_widget(formContact.name, {attr: {'class': 'form-control'} } ) }}
+            {% for error in formContact.name.vars.errors %}
+            <span class="help-block">{{ error.message }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group{% if formContact.email.vars.errors|length > 0 %} has-error{% endif %}">
+            {{ form_label(formContact.email) }}
+            {{ form_widget(formContact.email, {attr: {'class': 'form-control'} } ) }}
+            {% for error in formContact.email.vars.errors %}
+            <span class="help-block">{{ error.message }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group{% if formContact.phone.vars.errors|length > 0 %} has-error{% endif %}">
+            {{ form_label(formContact.phone) }}
+            {{ form_widget(formContact.phone, {attr: {'class': 'form-control'} } ) }}
+            {% for error in formContact.phone.vars.errors %}
+            <span class="help-block">{{ error.message }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group{% if formContact.message.vars.errors|length > 0 %} has-error{% endif %}">
+            {{ form_label(formContact.message) }}
+            {{ form_widget(formContact.message, {attr: {'class': 'form-control'} } ) }}
+            {% for error in formContact.message.vars.errors %}
+            <span class="help-block">{{ error.message }}</span>
+            {% endfor %}
+        </div>
+
+        {{ form_widget(formContact.submit, {attr: {'class': 'btn btn-primary'} } ) }}
+
+        {{ form_rest(formContact) }}
+        {{ form_end(formContact) }}
+
+    </div>
 {% endblock %}
